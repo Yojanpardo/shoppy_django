@@ -8,7 +8,7 @@ from .models import Product
 
 def index(request):
 	product = Product.objects.order_by('id')
-	template = loader.get_template('index.html')
+	template = loader.get_template('home.html')
 	context = {
 		'product': product
 	}
