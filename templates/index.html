@@ -8,7 +8,7 @@
 <body>
 	<div class="navbar-fixed">
     	<nav>
-      		<div class="nav-wrapper">
+      		<div class="nav-wrapper indigo accent-3">
         		<a href="/" class="brand-logo">Shoppy</a>
         		<ul class="right hide-on-med-and-down">
           			<li><a href="sass.html">Sass</a></li>
@@ -18,14 +18,26 @@
     	</nav>
   	</div>
   	<div class="container">
-		<ul class="collection with-header">
-			<li class="collection-header"><h4>name</h4></li>
-			{% for pr in product %}
-				<li class="collection-item">{{ pr.name }}</li>
-			{% endfor %}
-		</ul>
+  		<table>
+        	<thead>
+          		<tr>
+              		<th>Name</th>
+              		<th>Item Name</th>
+            		<th>Item Price</th>
+          		</tr>
+        	</thead>
+        	<tbody>
+        		{% for pr in product %}
+          		<tr>
+            		<td>{{ pr.name }}</td>
+            		<td>{{ pr.category }}</td>
+            		<td>{{ pr.price }}</td>
+          		</tr>
+        		{% endfor %}
+        	</tbody>
+      	</table>
 	</div>
-	<footer class="page-footer">
+	<footer class="page-footer indigo accent-3">
         <div class="container">
             <div class="row">
     	        <div class="col l6 s12">
