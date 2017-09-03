@@ -21,15 +21,20 @@
   		<table>
         	<thead>
           		<tr>
-              		<th>Name</th>
-              		<th>Item Name</th>
+              	<th>Name</th>
+              	<th>Item Name</th>
             		<th>Item Price</th>
           		</tr>
         	</thead>
         	<tbody>
         		{% for pr in product %}
           		<tr>
-            		<td>{{ pr.name }}</td>
+                <td class="">
+                  <div class="chip">
+                    <img src="{{ pr.image.url }}" alt="Contact Person">
+                    {{ pr.name }}
+                  </div>
+                </td>
             		<td>{{ pr.category }}</td>
             		<td>{{ pr.price }}</td>
           		</tr>
