@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block page_title %}
+  {{ title }}
+{% endblock %}
+{% block content %}
+<table>
+  	<thead>
+    		<tr>
+        	<th>Name</th>
+        	<th>Item Name</th>
+      		<th>Item Price</th>
+    		</tr>
+  	</thead>
+  	<tbody>
+    
+  		{% for pr in product %}
+    		<tr>
+          <td>
+           <a href="{% url 'product_detail' pr.pk %}">
+             <div class="chip">
+               <img src="{{ pr.image.url }}" alt="">
+               {{ pr.name }}
+             </div>
+           </a>
+         </td>
+     		<td>{{ pr.category }}</td>
+     		<td>{{ pr.price }}</td>
+   		</tr>
+ 		{% endfor %}
+    
+ 	</tbody>
+</table>
+{% endblock %}
