@@ -1,12 +1,13 @@
+{% load staticfiles %}
 <!-- Developed by Yojan Pardo -->
 <!DOCTYPE html>
 <html>
 <head>
-  {% load staticfiles %}
 	<meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %"./>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+  <!--<link rel="stylesheet" href="{% static 'css/materialize.css' %}"./>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css"/>-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<title>{% block page_title %}{% endblock %}</title>
 </head>
@@ -56,6 +57,8 @@
     </footer>
     <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+  <script type="text/javascript"  src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="{% static 'js/base.js' %}"></script>
+  <script type="text/javascript"></script>
 </body>
 </html>
