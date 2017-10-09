@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+# Create your models here. Developed by Yojan Pardo
 
 class Product(models.Model):
 	name = models.CharField(max_length=255)
