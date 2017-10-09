@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %"./>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<title>{% block page_title %}{% endblock %}</title>
 </head>
 <body>
@@ -21,10 +22,12 @@
     	</nav>
   	</div>
   	<div class="container">
-    {% block content %}
-    {% endblock %}
+      <div class="row">
+        {% block content %}
+        {% endblock %}
+      </div>
     </div>
-	<footer class="page-footer indigo accent-3">
+	<footer class="page-footer indigo accent-3 col s12">
         <div class="container">
             <div class="row">
     	        <div class="col l6 s12">
