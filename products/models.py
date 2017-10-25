@@ -1,4 +1,5 @@
 from django.db import models
+from clients.models import Client
 
 # Create your models here. Developed by Yojan Pardo
 
@@ -14,3 +15,14 @@ class Product(models.Model):
 
 	class Meta:
 		ordering = ('id',)
+
+class Favorite(models.Model):
+	user = models.ForeignKey(Client)
+	product = models.ForeignKey(Product)
+
+	class meta:
+		verbose_name = 'Favorite'
+		verbose_name_plural = 'Favorites'
+
+	def __str__(self):
+		return '%s %s' % (self.user.first_name, self.product.name)
