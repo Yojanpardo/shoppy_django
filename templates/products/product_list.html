@@ -13,10 +13,10 @@
   	</thead>
   	<tbody>
     
-  		{% for pr in product %}
+  		{% for pr in object_list %}
     		<tr>
           <td>
-           <a href="{% url 'product_detail' pr.pk %}">
+           <a href="{% url "products:product_detail" pr.id %}">
              <div class="chip">
                <img src="{{ pr.image.url }}" alt="">
                {{ pr.name }}
@@ -31,10 +31,10 @@
  	</tbody>
 </table>
 <div class="col s4 offset-s8 ">
-  <a href="{% url 'new_product' %}" class="waves-effect waves-light btn hide-on-med-and-down"><i class="material-icons left">add</i>Nuevo producto</a>
+  <a href="{% url "products:new_product" %}" class="waves-effect waves-light btn hide-on-med-and-down"><i class="material-icons left">add</i>Nuevo producto</a>
 </div>
 <div class="col s3 offset-s9 fixed-action-btn">
-<a href="{% url 'new_product' %}" class="btn-floating btn-large waves-effect waves-light red hide-on-large-only"><i class="material-icons">add</i></a>
+  <a href="{% url "products:new_product" %}" class="btn-floating btn-large waves-effect waves-light red hide-on-large-only"><i class="material-icons">add</i></a>
 </div>
 {% endblock %}
 
