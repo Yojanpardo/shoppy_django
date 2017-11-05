@@ -16,7 +16,12 @@
         		<a href="/" class="brand-logo">Shoppy</a>
         		<ul class="right hide-on-med-and-down">
           			<li><a href="/products">Nuestros productos</a></li>
-          			<li><a href="">Components</a></li>
+                {% if user.is_authenticated %}
+                    <li>{{ user.username }}</li>
+                    <li><a href="{% url "products:logout" %}" >logout</a></li>
+                {% else %}
+                    <li><a href="{% url "products:auth_login" %}">Login or signup</a></li>
+                {% endif %}
         		</ul>
       		</div>
     	</nav>
