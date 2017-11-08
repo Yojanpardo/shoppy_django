@@ -11,6 +11,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import Product
 from .forms import ProductForm
 
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -29,6 +30,7 @@ class ProductList(ListView):
 class ProductDetail(DetailView):
 	model = Product
 
+@login_required
 def new_product(request):
 	if request.method == 'POST':
 		form = ProductForm(request.POST, request.FILES)
@@ -60,7 +62,25 @@ def  auth_login(request):
 			return redirect('/')
 		
 	context = {}
-	return render(request, 'login/login.html',context)
+	return render(request, 'accounts/login.html',context)
+
+def  auth_signup(request):
+	if request.method == 'POST':
+		action = request.POST.get('action', None)
+		username = request.POST.get('username', None)
+		password = request.POST.get('password', None)
+	
+		if action == 'signup':
+			user=User.objects.create_user(username=username,
+				                          password=password)
+			user.save()
+		elif action=='login':
+			user = authenticate(username=username, password=password)
+			login(request,user)
+			return redirect('/')
+		
+	context = {}
+	return render(request, 'accounts/signup.html',context)
 
 
 #def all_products(request):

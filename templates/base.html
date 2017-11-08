@@ -20,7 +20,8 @@
                     <li>{{ user.username }}</li>
                     <li><a href="{% url "products:logout" %}" >logout</a></li>
                 {% else %}
-                    <li><a href="{% url "products:auth_login" %}">Login or signup</a></li>
+                    <li><a href="{% url "products:auth_login" %}">Login</a></li>
+                    <li><a href="{% url "products:auth_signup" %}">Sign up</a></li>
                 {% endif %}
         		</ul>
       		</div>
