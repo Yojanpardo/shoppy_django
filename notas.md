@@ -1,2 +1,0 @@
-* comando ´´´./manage.py check´´´ revisa los cambios realizados
-* @admin.register(NombreDelModelo) es un decorador y nos permite usarlo en vez del admin.site.register para mostrar mas datos en la pantalla del admin.
