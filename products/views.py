@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Product
 from .forms import ProductForm
+from .mixins import LoginRequiredMixin
 
 from django.contrib.auth.decorators import login_required
 
@@ -27,7 +28,7 @@ def index(request):
 class ProductList(ListView):
 	model = Product
 
-class ProductDetail(DetailView):
+class ProductDetail(LoginRequiredMixin, DetailView):
 	model = Product
 
 @login_required
@@ -51,7 +52,7 @@ def  auth_login(request):
 		action = request.POST.get('action', None)
 		username = request.POST.get('username', None)
 		password = request.POST.get('password', None)
-	
+
 		if action == 'signup':
 			user=User.objects.create_user(username=username,
 				                          password=password)
@@ -60,7 +61,7 @@ def  auth_login(request):
 			user = authenticate(username=username, password=password)
 			login(request,user)
 			return redirect('/')
-		
+
 	context = {}
 	return render(request, 'accounts/login.html',context)
 
@@ -69,7 +70,7 @@ def  auth_signup(request):
 		action = request.POST.get('action', None)
 		username = request.POST.get('username', None)
 		password = request.POST.get('password', None)
-	
+
 		if action == 'signup':
 			user=User.objects.create_user(username=username,
 				                          password=password)
@@ -78,7 +79,7 @@ def  auth_signup(request):
 			user = authenticate(username=username, password=password)
 			login(request,user)
 			return redirect('/')
-		
+
 	context = {}
 	return render(request, 'accounts/signup.html',context)
 
