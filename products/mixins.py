@@ -10,6 +10,6 @@ class AuthRedirectMixin(object):
                 *args, **kwargs)
 class LoginRequiredMixin(object):
     @method_decorator(login_required())
-    def dispatch(self, request, *arg, **kwargs):
-        return super(LoginRedirectMixin, self).dispatch(request, *args, **kwargs)
+    def dispatch(self, request, *args, **kwargs):
+        return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
         self.arg = arg
