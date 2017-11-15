@@ -3,6 +3,7 @@ from django.template import loader #importa el cargador de plntilla de django
 
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
 
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
@@ -12,7 +13,10 @@ from .models import Product
 from .forms import ProductForm
 from .mixins import LoginRequiredMixin
 
+import os
+import csv
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse_lazy
 
 # Create your views here.
 
@@ -31,21 +35,11 @@ class ProductList(ListView):
 class ProductDetail(LoginRequiredMixin, DetailView):
 	model = Product
 
-@login_required
-def new_product(request):
-	if request.method == 'POST':
-		form = ProductForm(request.POST, request.FILES)
-		if form.is_valid():
-			product = form.save()
-			product.save()
-			return HttpResponseRedirect('/products')
-	else:
-		form = ProductForm()
-	template = loader.get_template('products/new_product.html')
-	context = {
-		'form':form
-	}
-	return HttpResponse(template.render(context, request))
+class NewProduct(LoginRequiredMixin, CreateView):
+	model = Product
+	success_url = reverse_lazy('products:all_products')
+	fields = ['name','description','category','price','image']
+	title = Product.name
 
 def  auth_login(request):
 	if request.method == 'POST':
